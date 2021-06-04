@@ -11,7 +11,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 })
 export class LoginComponent implements OnInit {
 
-    
+  nombre: string;
   loginForm:FormGroup;
   constructor(private fb: FormBuilder, private usuarioService:UsuarioService, ) { }
   
@@ -24,9 +24,10 @@ export class LoginComponent implements OnInit {
   }
 
   crearUsuario(){
-    
-      this.usuarioService.getPersona(this.loginForm.get("userLabel").value).subscribe(data => {
-        console.log(data);
-      });
+    this.usuarioService.getPersona(this.loginForm.get("userLabel").value).subscribe(data => {
+      console.log(data);
+      // localStorage.setItem(“nombrePersona”, data.);
+    });
   }
+
 }
