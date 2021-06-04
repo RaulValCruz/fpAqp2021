@@ -13,12 +13,14 @@ import { ProgressComponent } from './pages/progress/progress.component';
 import { Grafica1Component } from './pages/grafica1/grafica1.component';
 import { PagesComponent } from './pages/pages.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import {LoginComponent} from "./auth/login/login.component";
+import {UsuarioService} from "./services/usuario.service";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    
     NopagefoundComponent,
     DashboardComponent,
     BreadcrumbsComponent,
@@ -27,12 +29,17 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     ProgressComponent,
     Grafica1Component,
     PagesComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
-    FormsModule
+    HttpClientModule
+  ],
+  providers: [
+UsuarioService
   ],
   bootstrap: [AppComponent]
 })

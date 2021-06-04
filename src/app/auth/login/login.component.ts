@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+
 
 @Component({
   selector: 'app-login',
@@ -11,7 +13,7 @@ export class LoginComponent implements OnInit {
 
     
   loginForm:FormGroup;
-  constructor(private fb: FormBuilder, private usuarioService:UsuarioService) { }
+  constructor(private fb: FormBuilder, private usuarioService:UsuarioService, ) { }
   
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -22,6 +24,9 @@ export class LoginComponent implements OnInit {
   }
 
   crearUsuario(){
-    this.usuarioService.getPersona(this.loginForm.get("userLabel"))
+    
+      this.usuarioService.getPersona(this.loginForm.get("userLabel").value).subscribe(data => {
+        console.log(data);
+      });
   }
 }

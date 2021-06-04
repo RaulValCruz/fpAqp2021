@@ -18,6 +18,7 @@ File: scss
 /*******************
 Login register and recover password Page
 ******************/
+@media (min-width: 500px) {
 .logo_login_china{
   margin: auto;
 }
@@ -51,4 +52,10 @@ Login register and recover password Page
       right: 0px;
       position: absolute;
       height: 100%; }
+}
+@media (max-width: 500px) {
+  img {
+    display: none !important;
+  }
   
+}
