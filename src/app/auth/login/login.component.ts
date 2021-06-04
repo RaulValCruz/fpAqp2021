@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
-
+    
+  loginForm:FormGroup;
+  constructor(private fb: FormBuilder, private usuarioService:UsuarioService) { }
+  
   ngOnInit(): void {
+    this.loginForm = this.fb.group({
+      'userLabel':['', Validators.required, Validators.minLength(8)],
+      'userPassword':['', Validators.required, Validators.minLength(8)]
+      // userPassword: new FormControl(this.userPassword)
+    });
   }
 
+  crearUsuario(){
+    this.usuarioService.getPersona(this.loginForm.get("userLabel"))
+  }
 }

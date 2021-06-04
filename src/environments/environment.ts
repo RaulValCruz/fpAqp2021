@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: 'http://190.119.207.218:8088/app_votaciones',
+  apiDni: 'https://dni.optimizeperu.com/api/persons'
 };
 
 /*
