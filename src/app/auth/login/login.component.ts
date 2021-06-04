@@ -7,26 +7,27 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: [ './login.component.css' ]
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
 
-    
-  loginForm:FormGroup;
-  constructor(private fb: FormBuilder, private usuarioService:UsuarioService, ) { }
-  
+
+  loginForm: FormGroup;
+  constructor(private fb: FormBuilder, private usuarioService: UsuarioService,) { }
+
   ngOnInit(): void {
+    const validators = [Validators.required, Validators.minLength(8)]
     this.loginForm = this.fb.group({
-      'userLabel':['', Validators.required, Validators.minLength(8)],
-      'userPassword':['', Validators.required, Validators.minLength(8)]
+      'userLabel': ['', validators],
+      'userPassword': ['', validators]
       // userPassword: new FormControl(this.userPassword)
     });
   }
 
-  crearUsuario(){
-    
-      this.usuarioService.getPersona(this.loginForm.get("userLabel").value).subscribe(data => {
-        console.log(data);
-      });
+  crearUsuario() {
+
+    this.usuarioService.getPersona(this.loginForm.get("userLabel").value).subscribe(data => {
+      console.log(data);
+    });
   }
 }
