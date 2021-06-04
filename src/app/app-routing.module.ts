@@ -10,16 +10,16 @@ import { NopagefoundComponent } from './pages/nopagefound/nopagefound.component'
 import { PagesComponent } from './pages/pages.component';
 
 const routes: Routes = [
-  { 
-    path: '', 
+  {
+    path: '',
     component: PagesComponent,
     children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'grafica1', component: Grafica1Component },
-      { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+      { path: '', redirectTo: '/login', pathMatch: 'full' },
     ]
   },
-  
+
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
 
@@ -31,8 +31,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [],
   imports: [
-    RouterModule.forRoot( routes )
+    RouterModule.forRoot(routes, { useHash: true })
   ],
-  exports: [ RouterModule ]
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }
